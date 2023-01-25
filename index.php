@@ -53,13 +53,39 @@
     </head>
     <body>
         <main>
-            <?php
-                foreach ($hotels as $key => $hotel) {
-                    foreach ($hotel as $key => $value) {
-                        echo "<p>{$key}: {$value}</p>";
-                        }
-                }
-            ?>
+            <table border="1">
+                <thead>
+                    <tr>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Parcheggio</th>
+                    <th>Voto</th>
+                    <th>Distanza dal centro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                            foreach ($hotels as $key => $hotel) {
+                                if ($hotel['parking']) {
+                                    $parking = 'sì';
+                                } else {
+                                    $parking = 'no';
+                                }
+
+                                echo
+                                    "<tr>
+                                        <td>{$hotel['name']}</td>
+                                        <td>{$hotel['description']}</td>
+                                        <td>$parking</td>
+                                        <td>{$hotel['vote']} stelle</td>
+                                        <td>{$hotel['distance_to_center']} metri</td>
+                                    </tr>";
+                            }
+                        ?>
+                    </tr>
+                </tbody>
+            </table>
         </main>
     </body>
 </html>
